@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подорожі мрії</title>
+    <style>
+        /* Стилі для всього сайту */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        /* Контейнер для всього вмісту */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+
+        /* Навігаційне меню */
+        nav {
+            background: #2c3e50;
+            border-radius: 10px;
+            padding: 15px 25px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: 600;
+            padding: 8px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: #e74c3c;
+            transform: scale(1.05);
+        }
+
+        /* Заголовки */
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            border-bottom: 4px solid #e74c3c;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #34495e;
+            margin: 25px 0 15px;
+        }
+
+        /* Картки напрямків */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: #f9f9f9;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+            border: 1px solid #eee;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            padding: 15px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #c0392b;
+        }
+
+        /* Форма контактів */
+        .contact-form {
+            background: #f2f5f9;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #e74c3c;
+            outline: none;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Інформаційні блоки */
+        .info-block {
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 30px;
+            border-left: 5px solid #e74c3c;
+        }
+
+        /* Підвал */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background: #2c3e50;
+            color: white;
+            border-radius: 10px;
+        }
+
+        /* Адаптація для мобільних */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            nav {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- НАВІГАЦІЯ (однакова для всіх сторінок) -->
+        <nav>
+            <a href="#home" onclick="showPage('home')">🏠 Головна</a>
+            <a href="#destinations" onclick="showPage('destinations')">✈️ Напрямки</a>
+            <a href="#contacts" onclick="showPage('contacts')">📞 Контакти</a>
+        </nav>
+
+        <!-- ============ СТОРІНКА 1: ГОЛОВНА ============ -->
+        <div id="page-home" class="page">
+            <h1>🌍 Подорожі мрії</h1>
+            
+            <div class="info-block">
+                <h2>Ваш гід у світі неймовірних пригод</h2>
+                <p style="font-size: 1.2em; margin-bottom: 15px;">Відкрийте для себе найкращі куточки планети з нашими ексклюзивними турами. Ми даруємо не просто відпочинок, а незабутні емоції!</p>
+                <p>Понад 10 років досвіду, 5000+ щасливих мандрівників, 30+ країн для подорожей.</p>
+            </div>
+
+            <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 30px;">
+                <div style="flex: 1; min-width: 250px;">
+                    <h2>🌟 Чому обирають нас?</h2>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 15px; padding-left: 25px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="%23e74c3c"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>') left center no-repeat;">
+                            <strong>Індивідуальний підхід</strong> — створюємо тур саме для вас
+                        </li>
+                        <li style="margin-bottom: 15px; padding-left: 25px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="%23e74c3c"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>') left center no-repeat;">
+                            <strong>Найкращі ціни</strong> — гарантія найнижчої вартості
+                        </li>
+                        <li style="margin-bottom: 15px; padding-left: 25px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="%23e74c3c"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>') left center no-repeat;">
+                            <strong>Цілодобова підтримка</strong> — ми завжди на зв'язку
+                        </li>
+                        <li style="margin-bottom: 15px; padding-left: 25px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="%23e74c3c"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>') left center no-repeat;">
+                            <strong>Безпека</strong> — страхування подорожей включено
+                        </li>
+                    </ul>
+                </div>
+                <div style="flex: 1; min-width: 250px; background: #e74c3c; color: white; padding: 25px; border-radius: 12px;">
+                    <h3 style="color: white; margin-top: 0;">🔥 Гарячі пропозиції</h3>
+                    <p style="font-size: 1.3em;">Єгипет від 350$</p>
+                    <p style="font-size: 1.3em;">Туреччина від 280$</p>
+                    <p style="font-size: 1.3em;">Чорногорія від 400$</p>
+                    <p style="margin-top: 15px;">*все включено</p>
+                    <a href="#" class="btn" onclick="showPage('destinations'); return false;" style="background: white; color: #e74c3c; margin-top: 15px;">Переглянути тури</a>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; text-align: center;">
+                <h2>Відгуки наших мандрівників</h2>
+                <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-top: 20px;">
+                    <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); max-width: 300px;">
+                        ⭐⭐⭐⭐⭐<br>
+                        "Неймовірний відпочинок на Мальдівах! Все організовано на вищому рівні."<br>
+                        <strong>- Олена</strong>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); max-width: 300px;">
+                        ⭐⭐⭐⭐⭐<br>
+                        "Подорож до Італії перевершила всі очікування. Дякую команді!"<br>
+                        <strong>- Андрій</strong>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); max-width: 300px;">
+                        ⭐⭐⭐⭐⭐<br>
+                        "Крутий сервіс, швидко підібрали тур у Японію. Рекомендую!"<br>
+                        <strong>- Марія</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ СТОРІНКА 2: НАПРЯМКИ ============ -->
+        <div id="page-destinations" class="page" style="display: none;">
+            <h1>✈️ Популярні напрямки</h1>
+            <p style="font-size: 1.2em; margin-bottom: 20px;">Оберіть свою мрію серед найкращих курортів світу</p>
+            
+            <!-- Картки напрямків (7 штук, додано КИТАЙ) -->
+            <div class="cards">
+                <!-- Картка 1: Париж -->
+                <div class="card">
+                    <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/699466/pexels-photo-699466.jpeg?auto=compress&cs=tinysrgb&w=600');">
+                        Париж, Франція
+                    </div>
+                    <div class="card-content">
+                        <p>✨ Романтика, мистецтво, вишукана кухня. Ейфелева вежа, Лувр, Монмартр.</p>
+                        <p><strong>Тривалість:</strong> 5 днів / 4 ночі</p>
+                        <p><strong>Вартість:</strong> від 650 €</p>
+                        <a href="#" class="btn" onclick="alert('Дякуємо! Ми зв\'яжемося з вами для бронювання Парижа.'); return false;">Забронювати</a>
+                    </div>
+                </div>
+                <!-- Картка 2: Балі -->
+                <div class="card">
+                    <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/2166553/pexels-photo-2166553.jpeg?auto=compress&cs=tinysrgb&w=600');">
+                        Балі, Індонезія
+                    </div>
+                    <div class="card-content">
+                        <p>🏝️ Райські пляжі, серфінг, йога, унікальна культура та храми.</p>
+                        <p><strong>Тривалість:</strong> 11 днів / 10 ночей</p>
+                        <p><strong>Вартість:</strong> від 1200 $</p>
+                        <a href="#" class="btn" onclick="alert('Дякуємо! Ми зв\'яжемося з вами для бронювання Балі.'); return false;">Забронювати</a>
+                    </div>
+                </div>
+                <!-- Картка 3: Нью-Йорк -->
+                <div class="card">
+                    <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg?auto=compress&cs=tinysrgb&w=600');">
+                        Нью-Йорк, США
+                    </div>
+                    <div class="card-content">
+                        <p>🗽 Хмарочоси, Бродвей, Центральний парк, Статуя Свободи.</p>
+                        <p><strong>Тривалість:</strong> 7 днів / 6 ночей</p>
+                        <p><strong>Вартість:</strong> від 1500 $</p>
+                        <a href="#" class="btn" onclick="alert('Дякуємо! Ми зв\'яжемося з вами для бронювання Нью-Йорка.'); return false;">Забронювати</a>
+                    </div>
+                </div>
+                <!-- Картка 4: Київ (Україна) -->
+                <div class="card">
+                    <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/1396131/pexels-photo-1396131.jpeg?auto=compress&cs=tinysrgb&w=600');">
+                        Київ, Україна
+                    </div>
+                    <div class="card-content">
+                        <p>🏛️ Історичні пам'ятки, Софія Київська, Лавра, атмосферні вулички.</p>
+                        <p><strong>Тривалість:</strong> 3 дні / 2 ночі</p>
+                        <p><strong>Вартість:</strong> від 150 €</p>
+                        <a href="#" class="btn" onclick="alert('Дякуємо! Ми зв\'яжемося з вами для бронювання туру Києвом.'); return false;">Забронювати</a>
+                    </div>
+                </div>
+                <!-- Картка 5: Токіо -->
+                <div class="card">
+                    <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/2614818/pexels-photo-2614818.jpeg?auto=compress&cs=tinysrgb&w=600');">
+                        Токіо, Японія
+                    </div>
+                    <div class="card-content">
+                        <p>🗾 Футуристичні технології, традиційні храми, сакура, суші.</p>
+                        <p><strong>Тривалість:</strong> 8 днів / 7 ночей</p>
+                        <p><strong>Вартість:</strong> від 1800 $</p>
+                        <a href="#" class="btn" onclick="alert('Дякуємо! Ми зв\'яжемося з вами для бронювання Токіо.'); return false;">Забронювати</a>
+                    </div>
+                </div>
+                <!-- Картка 6: Рим -->
+                <div class="card">
+                    <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/1797161/pexels-photo-1797161.jpeg?auto=compress&cs=tinysrgb&w=600');">
+                        Рим, Італія
+                    </div>
+                    <div class="card-content">
+                        <p>🍕 Колізей, Ватикан, паста, джелато, неймовірна історія.</p>
+                        <p><strong>Тривалість:</strong> 6 днів / 5 ночей</p>
+                        <p><strong>Вартість:</strong> від 750 €</p>
+                        <a href="#" class="btn" onclick="alert('Дякуємо! Ми зв\'яжемося з вами для бронювання Риму.'); return false;">Забронювати</a>
+                    </div>
+                </div>
+                <!-- Картка 7: КИТАЙ (Велика Китайська стіна) -->
+                <div class="card">
+                    <div class="card-img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/36717/great-wall-of-china-china-wall-great-wall.jpg?auto=compress&cs=tinysrgb&w=600');">
+                        Великий Китай
+                    </div>
+                    <div class="card-content">
+                        <p>🐉 Велика Китайська стіна, Заборонене місто, неймовірна кухня, давня культура.</p>
+                        <p><strong>Тривалість:</strong> 10 днів / 9 ночей</p>
+                        <p><strong>Вартість:</strong> від 1450 $</p>
+                        <a href="#" class="btn" onclick="alert('Дякуємо! Ми зв\'яжемося з вами для бронювання туру до Китаю.'); return false;">Забронювати</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-block" style="margin-top: 30px;">
+                <h2>🌟 Спеціальна пропозиція</h2>
+                <p>При бронюванні 2 турів — знижка 10% на другий тур. При бронюванні 3 турів — дитячий квиток безкоштовно!</p>
+            </div>
+        </div>
+
+        <!-- ============ СТОРІНКА 3: КОНТАКТИ ============ -->
+        <div id="page-contacts" class="page" style="display: none;">
+            <h1>📞 Зв'яжіться з нами</h1>
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 30px;">
+                <!-- Ліва колонка: Контактна інформація -->
+                <div style="flex: 1; min-width: 280px;">
+                    <div style="background: #f8f9fa; padding: 25px; border-radius: 12px; height: 100%;">
+                        <h2 style="margin-top: 0;">Наш офіс</h2>
+                        <p style="margin-bottom: 20px;">📍 вул. Хрещатик, 25, Київ, 01001</p>
+                        <p style="margin-bottom: 20px;">📞 +380 (44) 123-45-67</p>
+                        <p style="margin-bottom: 20px;">📱 +380 (67) 890-12-34</p>
+                        <p style="margin-bottom: 20px;">✉️ info@travel-mriy.com</p>
+                        
+                        <h2 style="margin-top: 30px;">Графік роботи</h2>
+                        <p style="margin-bottom: 10px;">Пн-Пт: 09:00 - 20:00</p>
+                        <p style="margin-bottom: 10px;">Сб: 10:00 - 18:00</p>
+                        <p style="margin-bottom: 10px;">Нд: вихідний</p>
+                        
+                        <div style="margin-top: 30px;">
+                            <h2>Соціальні мережі</h2>
+                            <div style="display: flex; gap: 15px; margin-top: 15px;">
+                                <a href="#" style="background: #3b5998; color: white; padding: 10px 15px; border-radius: 25px; text-decoration: none;">Facebook</a>
+                                <a href="#" style="background: #e4405f; color: white; padding: 10px 15px; border-radius: 25px; text-decoration: none;">Instagram</a>
+                                <a href="#" style="background: #1da1f2; color: white; padding: 10px 15px; border-radius: 25px; text-decoration: none;">Twitter</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Права колонка: Форма зворотного зв'язку -->
+                <div style="flex: 2; min-width: 300px;">
+                    <div class="contact-form">
+                        <h2 style="margin-top: 0; margin-bottom: 25px;">Напишіть нам</h2>
+                        
+                        <form onsubmit="alert('Дякуємо! Ваше повідомлення надіслано. Ми зв\'яжемося з вами найближчим часом.'); return false;">
+                            <div class="form-group">
+                                <label for="name">Ваше ім'я *</label>
+                                <input type="text" id="name" name="name" placeholder="Іван Петренко" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" placeholder="ivan@example.com" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Телефон</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+380 XX XXX XX XX">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="country">Оберіть напрямок</label>
+                                <select id="country" name="country">
+                                    <option value="">-- Оберіть країну --</option>
+                                    <option value="paris">Париж, Франція</option>
+                                    <option value="bali">Балі, Індонезія</option>
+                                    <option value="newyork">Нью-Йорк, США</option>
+                                    <option value="kyiv">Київ, Україна</option>
+                                    <option value="tokyo">Токіо, Японія</option>
+                                    <option value="rome">Рим, Італія</option>
+                                    <option value="china">Великий Китай</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Повідомлення *</label>
+                                <textarea id="message" name="message" placeholder="Ваші побажання, запитання..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn" style="width: 100%; padding: 14px; font-size: 1.1em;">📨 Надіслати повідомлення</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Карта (умовна) -->
+            <div style="margin-top: 30px; background: #eef2f7; padding: 20px; border-radius: 12px; text-align: center;">
+                <h2>Як нас знайти?</h2>
+                <div style="background: #d1d9e6; height: 200px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #555;">
+                    🗺️ Тут буде карта Google Maps (Київ, вул. Хрещатик, 25)
+                </div>
+            </div>
+        </div>
+
+        <!-- ПІДВАЛ (footer) -->
+        <footer>
+            <p>© 2025 Подорожі мрії. Всі права захищені.</p>
+            <p style="margin-top: 10px; opacity: 0.8;">Ваш надійний партнер у світі подорожей</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript для перемикання сторінок -->
+    <script>
+        // Функція для показу вибраної сторінки
+        function showPage(pageName) {
+            // Отримуємо всі елементи з класом "page"
+            var pages = document.getElementsByClassName('page');
+            
+            // Ховаємо всі сторінки
+            for (var i = 0; i < pages.length; i++) {
+                pages[i].style.display = 'none';
+            }
+            
+            // Показуємо вибрану сторінку
+            document.getElementById('page-' + pageName).style.display = 'block';
+            
+            // Змінюємо URL без перезавантаження (для краси)
+            history.pushState(null, null, '#' + pageName);
+        }
+
+        // При завантаженні сторінки перевіряємо, чи є хеш в URL
+        window.onload = function() {
+            // Якщо в URL є #contacts - показуємо контакти, #destinations - напрямки, інакше головну
+            var hash = window.location.hash.substring(1);
+            if (hash === 'contacts') {
+                showPage('contacts');
+            } else if (hash === 'destinations') {
+                showPage('destinations');
+            } else {
+                showPage('home');
+            }
+        };
+    </script>
+</body>
+</html>
